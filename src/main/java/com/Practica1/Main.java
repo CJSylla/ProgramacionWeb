@@ -32,6 +32,11 @@ public class Main {
             System.out.println("\nTarea 3:");
             System.out.println("La cantidad de <img> dentro de <p> es de: " + getCantImagParrafo(documento));
 
+            System.out.println("\nTarea 4:");
+            System.out.println("La cantidad de <form method='post'> es de: " + getCantForm(documento, "post"));
+            System.out.println("La cantidad de <form method='get'> es de: " + getCantForm(documento, "get"));
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,5 +55,10 @@ public class Main {
     private static int getCantImagParrafo(Document html) {
         return html.select("p img").size();
     }
+
+    private static int getCantForm(Document html, String method) {
+        return html.select("form[method='" + method + "']").size();
+    }
+
 
 }
