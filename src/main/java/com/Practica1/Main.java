@@ -36,7 +36,8 @@ public class Main {
             System.out.println("La cantidad de <form method='post'> es de: " + getCantForm(documento, "post"));
             System.out.println("La cantidad de <form method='get'> es de: " + getCantForm(documento, "get"));
 
-
+            System.out.println("\nTarea 5:");
+            getCantInputForm(documento);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,6 +59,20 @@ public class Main {
 
     private static int getCantForm(Document html, String method) {
         return html.select("form[method='" + method + "']").size();
+    }
+
+    private static void getCantInputForm(Document html) {
+        int indSuperior = 1;
+        for(Element form : html.select("form")) {
+            int indInferior = 1;
+            System.out.println("\tForm #" + indSuperior + ":");
+            for(Element input : form.select("input")) {
+                System.out.println("El input #" + indInferior
+                        + " es de tipo " + input.attr("type"));
+                indInferior++;
+            }
+            indSuperior++;
+        }
     }
 
 
